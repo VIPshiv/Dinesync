@@ -1,0 +1,18 @@
+{
+  "name": "restaurent-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node backend/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "gsap": "^3.13.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

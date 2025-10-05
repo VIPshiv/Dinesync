@@ -1,0 +1,122 @@
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* src/components/Navbar/Navbar.css */
+.navbar {
+  background: rgba(49, 81, 30, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(26, 26, 25, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-radius: 0 0 20px 20px;
+  transition: all 0.3s ease;
+}
+
+/* Scroll state - more transparent */
+.navbar.scrolled {
+  background: rgba(49, 81, 30, 0.98);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 6px 30px rgba(26, 26, 25, 0.15);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: #F6FCDF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(246, 252, 223, 0.1);
+}
+
+.navbar-brand:hover {
+  color: #1A1A19;
+  transform: scale(1.05);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navbar-link {
+  color: #F6FCDF;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+.navbar-link:hover {
+  color: #1A1A19;
+  background: #F6FCDF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 252, 223, 0.3);
+}
+
+.navbar-link:active {
+  transform: translateY(0);
+}
+
+.logout {
+  background: none;
+  border: 2px solid #F6FCDF;
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  color: #F6FCDF;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(49, 81, 30, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.logout:hover {
+  color: #1A1A19;
+  background-color: #F6FCDF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 252, 223, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    border-radius: 0 0 15px 15px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+  
+  .navbar-links {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

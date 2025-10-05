@@ -1,0 +1,1066 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* Main section styling */
+.culinary-showcase {
+  position: relative;
+  padding: 2rem 0;
+  background-color: #F6FCDF;
+  background-image: none;
+  overflow: hidden;
+  color: #1A1A19;
+  perspective: 1000px;
+  height: 100vh;
+}
+
+/* Background elements - minimal and clean */
+.culinary-transition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    rgba(246, 252, 223, 0.7) 30%,
+    #F6FCDF 100%
+  );
+  z-index: 3;
+  animation: fadeInBottom 1s ease-in forwards;
+}
+
+@keyframes fadeInBottom {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.culinary-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+  height: auto;
+}
+
+/* Add media queries for responsive design */
+@media (max-width: 768px) {
+  /* Simplify card transitions on mobile */
+  .dish-card {
+    transition: transform 0.3s ease, opacity 0.3s ease, left 0.3s ease;
+  }
+}
+
+@media (max-width: 480px) {
+}
+
+/* Header styling */
+.culinary-header {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.header-accent {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #31511E, #859F3D);
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+  /* Will be controlled by GSAP */
+}
+
+.culinary-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #1A1A19;
+  text-shadow: 0 2px 4px rgba(26, 26, 25, 0.1);
+}
+
+.culinary-heading span {
+  display: inline-block;
+}
+
+.culinary-tagline {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.7rem;
+  color: #31511E;
+  margin-bottom: 2rem;
+  transform-origin: center;
+}
+
+/* Slider styling */
+.dish-slider {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto 3rem;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+
+/* Ensure the slider stage has proper 3D context */
+.slider-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+
+/* Restore dish card styling for better 3D effect */
+.dish-card {
+  position: absolute;
+  width: 340px;
+  height: 460px;
+  border-radius: 24px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: left 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              z-index 0s linear;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(26, 26, 25, 0.12), 
+              0 2px 8px rgba(26, 26, 25, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  will-change: left, transform, opacity;
+  z-index: 2;
+  border: 1px solid rgba(133, 159, 61, 0.1);
+}
+
+.dish-card[style*='opacity: 0'] {
+  pointer-events: none !important;
+}
+
+.dish-card.active {
+  box-shadow: 0 16px 48px rgba(26, 26, 25, 0.15), 
+              0 4px 16px rgba(133, 159, 61, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(133, 159, 61, 0.2);
+}
+
+.dish-card.active:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 24px 64px rgba(26, 26, 25, 0.2), 
+              0 8px 24px rgba(133, 159, 61, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(133, 159, 61, 0.3);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #F6FCDF 0%, rgba(246, 252, 223, 0.95) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.dish-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.dish-card::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 5%;
+  width: 90%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(255, 165, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(5px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dish-card.active:hover::after {
+  opacity: 1;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: linear-gradient(145deg, 
+    rgba(246, 252, 223, 0.98) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(246, 252, 223, 0.98) 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4),
+              inset 0 -1px 2px rgba(26, 26, 25, 0.02);
+}
+
+.card-back {
+  background: linear-gradient(145deg, 
+    rgba(246, 252, 223, 0.98) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(246, 252, 223, 0.98) 100%);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4),
+              inset 0 -1px 2px rgba(26, 26, 25, 0.02);
+}
+
+/* Card front styling */
+.dish-image-wrapper {
+  position: relative;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.dish-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  filter: saturate(1.2) contrast(1.05) brightness(1.02);
+}
+
+.dish-card.active:hover .dish-image {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 25, 0.1) 0%,
+    rgba(26, 26, 25, 0.3) 70%,
+    rgba(26, 26, 25, 0.5) 100%
+  );
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Dish glow effect (enhanced) */
+.dish-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(133, 159, 61, 0.15) 0%,
+    rgba(133, 159, 61, 0.05) 50%,
+    transparent 70%
+  );
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dish-card.active:hover .dish-glow {
+  opacity: 1;
+}
+
+.dish-info {
+  padding: 1.4rem 1.8rem 1.4rem 1.8rem;
+  position: relative;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(246, 252, 223, 0.05) 100%);
+}
+
+.dish-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent, 
+    rgba(133, 159, 61, 0.3) 50%, 
+    transparent);
+}
+
+.dish-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1A1A19;
+  margin-bottom: 0.4rem;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(26, 26, 25, 0.05);
+}
+
+.dish-rating {
+  color: #859F3D;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 2px rgba(133, 159, 61, 0.1);
+  font-weight: 500;
+}
+
+.star {
+  margin-right: 3px;
+  opacity: 0.3;
+}
+
+.star.filled {
+  opacity: 1;
+}
+
+.dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.6rem;
+}
+
+.dish-tag {
+  font-size: 0.6rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.dish-tag.spicy {
+  background: linear-gradient(135deg, #1A1A19 0%, #31511E 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(26, 26, 25, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(133, 159, 61, 0.2);
+}
+
+.dish-tag.vegetarian {
+  background: linear-gradient(135deg, #31511E 0%, #859F3D 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(49, 81, 30, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(133, 159, 61, 0.3);
+}
+
+.dish-tag.protein {
+  background: linear-gradient(135deg, #8B4513 0%, #CD853F 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(205, 133, 63, 0.3);
+}
+
+.dish-tag.seafood {
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(46, 139, 87, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(60, 179, 113, 0.3);
+}
+
+.dish-tag.premium {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1A1A19;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 165, 0, 0.4);
+  font-weight: 700;
+}
+
+.dish-tag.fresh {
+  background: linear-gradient(135deg, #00CED1 0%, #20B2AA 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(0, 206, 209, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(32, 178, 170, 0.3);
+}
+
+.dish-tag.chef-special {
+  background: linear-gradient(135deg, #9370DB 0%, #8A2BE2 100%);
+  color: #F6FCDF;
+  box-shadow: 0 2px 8px rgba(147, 112, 219, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-weight: 700;
+}
+
+.dish-price {
+  margin-top: auto;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #31511E;
+  text-shadow: 0 1px 3px rgba(49, 81, 30, 0.1);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(133, 159, 61, 0.1);
+  flex-shrink: 0;
+}
+
+/* Enhanced Card back styling */
+.dish-details {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.dish-back-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #1A1A19;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.dish-description {
+  color: #31511E;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.ingredients-section {
+  margin-bottom: 1.5rem;
+}
+
+.ingredients-label {
+  display: block;
+  color: #ff9966;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.ingredients-text {
+  color: #b8b8c0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.dish-meta {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  color: #8888a0;
+  margin-bottom: 0.3rem;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  color: #ff9966;
+  font-weight: 600;
+}
+
+.card-back-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dish-back-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #31511E;
+  text-shadow: none;
+}
+
+.order-button {
+  background: linear-gradient(135deg, #31511E, #859F3D);
+  color: #F6FCDF;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(255, 58, 96, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.order-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255, 58, 96, 0.6);
+}
+
+.order-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.order-button:hover::after {
+  left: 100%;
+}
+
+.button-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.order-button:hover .button-icon {
+  transform: translateX(5px);
+}
+
+/* Spotlight effect */
+.dish-spotlight {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 700px;
+  z-index: -2;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.spotlight-beam {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  animation: beam-sway 8s infinite ease-in-out;
+}
+
+@keyframes beam-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Slider controls */
+.slider-controls {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 40;
+}
+
+.slider-arrow {
+  background: rgba(26, 26, 25, 0.8);
+  border: 2px solid rgba(49, 81, 30, 0.6);
+  color: #F6FCDF;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+  background: #31511E;
+  border-color: #859F3D;
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(49, 81, 30, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+  background: linear-gradient(135deg, #31511E, #859F3D);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(49, 81, 30, 0.6);
+}
+
+/* Featured dish info section styling */
+.featured-dish-info {
+  position: relative;
+  background: rgba(25, 25, 33, 0.6);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  animation: fadeIn 0.8s forwards;
+}
+
+.featured-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.featured-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ff9966;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.featured-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
+}
+
+.featured-description {
+  color: #d0d0d8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.featured-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.featured-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #ff6ec7;
+  text-shadow: 0 0 10px rgba(255, 110, 199, 0.4);
+}
+
+/* View menu button (enhanced from specialties section) */
+.view-menu-button {
+  background: linear-gradient(135deg, #1A1A19, #31511E);
+  color: #F6FCDF;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(26, 26, 25, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.view-menu-button:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px rgba(49, 81, 30, 0.4);
+  background: linear-gradient(135deg, #31511E, #859F3D);
+}
+
+.view-menu-button::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.view-menu-button:hover::before {
+  left: 100%;
+}
+
+.menu-button-text {
+  margin-right: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-button-icon {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.view-menu-button:hover .menu-button-icon {
+  transform: translateX(5px);
+}
+
+.menu-button {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.menu-button:hover::after {
+  left: 100%;
+}
+
+.menu-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-button:hover .menu-icon {
+  transform: translateX(5px);
+}
+
+/* Animation classes for entrance effects */
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.slide-up {
+  animation: slideUp 1s forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Card flip animation enhancements */
+@keyframes flipHighlight {
+  0% { box-shadow: 0 0 0 rgba(255, 58, 96, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 58, 96, 0.6); }
+  100% { box-shadow: 0 0 0 rgba(255, 58, 96, 0); }
+}
+
+@media screen and (max-width: 1200px) {
+  .culinary-heading {
+    font-size: 4rem;
+  }
+  
+  .dish-slider {
+    height: 550px;
+  }
+  
+  .dish-card {
+    width: 300px;
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .culinary-heading {
+    font-size: 3.5rem;
+    letter-spacing: 6px;
+  }
+  
+  .culinary-tagline {
+    font-size: 1.6rem;
+  }
+  
+  .food-quote {
+    font-size: 1.6rem;
+  }
+  
+  .dish-slider {
+    height: 500px;
+  }
+  
+  .featured-title {
+    font-size: 2.2rem;
+  }
+  
+  .featured-description {
+    font-size: 1rem;
+  }
+  
+  .featured-price {
+    font-size: 2.2rem;
+  }
+  
+  .view-menu-button {
+    padding: 0.9rem 2rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .culinary-showcase {
+    padding: 6rem 0;
+    min-height: 800px;
+  }
+  
+  .culinary-heading {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+  
+  .culinary-tagline {
+    font-size: 1.4rem;
+  }
+  
+  .food-quote {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+  
+  .dish-slider {
+    height: 450px;
+  }
+  
+  .dish-card {
+    width: 280px;
+    height: 420px;
+  }
+  
+  .dish-title {
+    font-size: 1.3rem;
+  }
+  
+  .dish-rating {
+    font-size: 1rem;
+  }
+  
+  .dish-price {
+    font-size: 1.6rem;
+  }
+  
+  .featured-dish-info {
+    padding: 1.5rem;
+  }
+  
+  .featured-title {
+    font-size: 2rem;
+  }
+  
+  .featured-description {
+    margin-bottom: 1.5rem;
+  }
+  
+  .featured-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .flavor-burst {
+    width: 100px;
+    height: 100px;
+    font-size: 0.7rem;
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .culinary-showcase {
+    padding: 5rem 0;
+    min-height: 700px;
+  }
+  
+  .culinary-container {
+    padding: 0 1rem;
+  }
+  
+  .culinary-heading {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  .dish-slider {
+    height: 400px;
+  }
+  
+  .dish-card {
+    width: 260px;
+    height: 380px;
+  }
+  
+  .dish-info {
+    padding: 1rem;
+  }
+  
+  .dish-title {
+    font-size: 1.2rem;
+  }
+  
+  .dish-tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  
+  .taste-label {
+    font-size: 0.8rem;
+  }
+  
+  .taste-bar {
+    height: 5px;
+  }
+  
+  .dish-price {
+    font-size: 1.4rem;
+  }
+  
+  .dish-back-title {
+    font-size: 1.5rem;
+  }
+  
+  .dish-description {
+    font-size: 0.85rem;
+  }
+  
+  .ingredients-label {
+    font-size: 0.7rem;
+  }
+  
+  .ingredients-text {
+    font-size: 0.8rem;
+  }
+  
+  .meta-label {
+    font-size: 0.7rem;
+  }
+  
+  .meta-value {
+    font-size: 1rem;
+  }
+  
+  .dish-back-price {
+    font-size: 1.5rem;
+  }
+  
+  .order-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .featured-label {
+    font-size: 0.7rem;
+  }
+  
+  .featured-title {
+    font-size: 1.8rem;
+  }
+  
+  .featured-description {
+    font-size: 0.9rem;
+  }
+  
+  .featured-price {
+    font-size: 1.8rem;
+  }
+  
+  .view-menu-button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;  }
+  
+  .menu-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

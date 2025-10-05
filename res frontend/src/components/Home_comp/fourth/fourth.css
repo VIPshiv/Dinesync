@@ -1,0 +1,400 @@
+/* Fourth Section - Reviews Wall of Love - Updated Theme */
+.fourth-section {
+  padding: 80px 0;
+  background: #F6FCDF;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+.reviews-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #1A1A19;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.section-title .gradient-text {
+  background: linear-gradient(135deg, #31511E 0%, #859F3D 50%, #1A1A19 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #31511E, #859F3D);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #31511E;
+  margin-bottom: 20px;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: 'Crimson Text', serif;
+}
+
+.section-subtitle::before {
+  content: '✨';
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.section-subtitle::after {
+  content: '✨';
+  margin-left: 8px;
+  font-size: 1rem;
+}
+
+.rating-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stars-display {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 1.2rem;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+  color: #1A1A19 !important;
+}
+
+.star.filled {
+  filter: grayscale(0%);
+  color: #859F3D !important;
+}
+
+.rating-text {
+  font-size: 1.1rem;
+  color: #1A1A19;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Reviews Wrapper */
+.reviews-wrapper {
+  margin-bottom: 50px;
+}
+
+.reviews-row {
+  margin-bottom: 30px;
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 25px;
+  position: absolute;
+  height: 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Remove old CSS animations - now using GSAP */
+
+/* Review Cards - Berry Bliss Theme */
+.review-card {
+  width: 280px;
+  height: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  flex-grow: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid rgba(243, 244, 246, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Optimized hover effect with shadow all around */
+.review-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(26, 26, 25, 0.2),
+              0 10px 25px rgba(26, 26, 25, 0.15),
+              0 5px 15px rgba(26, 26, 25, 0.1),
+              0 0 0 1px rgba(49, 81, 30, 0.1);
+}
+
+/* Removed CSS hover effects - now using GSAP */
+
+/* Color variations for cards - Berry Bliss Theme */
+.review-card.blue {
+  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+  color: white;
+}
+
+.review-card.green {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  color: white;
+}
+
+.review-card.red {
+  background: linear-gradient(135deg, #F87171 0%, #EF4444 100%);
+  color: white;
+}
+
+.review-card.yellow {
+  background: linear-gradient(135deg, #FDE047 0%, #EAB308 100%);
+  color: #374151;
+}
+
+.review-card.orange {
+  background: linear-gradient(135deg, #FB7185 0%, #F43F5E 100%);
+  color: white;
+}
+
+.review-card.purple {
+  background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%);
+  color: white;
+}
+
+.review-card.teal {
+  background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%);
+  color: white;
+}
+
+.review-card.brown {
+  background: linear-gradient(135deg, #A3A3A3 0%, #737373 100%);
+  color: white;
+}
+
+.review-card.pink {
+  background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+  color: white;
+}
+
+.review-card.indigo {
+  background: linear-gradient(135deg, #818CF8 0%, #6366F1 100%);
+  color: white;
+}
+
+.review-card.lime {
+  background: linear-gradient(135deg, #A3E635 0%, #84CC16 100%);
+  color: #374151;
+}
+
+.review-card.cyan {
+  background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
+  color: white;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.avatar-container {
+  margin-right: 15px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 22px;
+  background: radial-gradient(circle at center, #859F3D, #31511E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #F6FCDF;
+  border: 2px solid rgba(49, 81, 30, 0.5);
+  box-shadow: 0 2px 8px rgba(49, 81, 30, 0.3);
+}
+
+.reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  font-family: 'Playfair Display', serif;
+  color: #1A1A19 !important;
+}
+
+.reviewer-title {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: #31511E !important;
+}
+
+/* Rating */
+.rating-container {
+  margin-bottom: 15px;
+  color: #1A1A19 !important;
+}
+
+/* Review Text */
+.review-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  font-style: italic;
+  opacity: 0.95;
+  font-family: 'Inter', sans-serif;
+  color: #1A1A19 !important;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: #31511E !important;
+}
+
+/* CTA Section - Berry Bliss Theme */
+.cta-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.leave-review-btn {
+  background: linear-gradient(135deg, #31511E 0%, #859F3D 100%);
+  color: #F6FCDF;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(49, 81, 30, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+}
+
+.leave-review-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(49, 81, 30, 0.4);
+  background: linear-gradient(135deg, #859F3D 0%, #31511E 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fourth-section {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .reviews-row {
+    height: 300px;
+  }  .review-card {
+    min-width: 240px;
+    height: 260px;
+    padding: 18px;
+  }
+  
+  .rating-summary {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }  .review-card {
+    min-width: 220px;
+    height: 240px;
+    padding: 16px;
+  }
+  }
+  
+  .reviewer-name {
+    font-size: 1rem;
+  }
+  
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+
+/* Pause animation on hover */
+.reviews-row:hover .reviews-track {
+  animation-play-state: paused;
+}
+
+/* Add subtle glow effect */
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}

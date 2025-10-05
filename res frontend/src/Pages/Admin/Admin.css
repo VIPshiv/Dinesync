@@ -1,0 +1,118 @@
+/* src/pages/Admin/Admin.css */
+.admin {
+  padding: 6rem 2rem 2rem 2rem; /* Added top padding to account for fixed navbar */
+}
+  
+  .admin-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #1e40af;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #374151;
+  }
+  
+  .admin-form {
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .form-textarea {
+    height: 80px;
+    resize: vertical;
+  }
+  
+  .form-submit {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-submit:hover {
+    background-color: #2563eb;
+  }
+  
+  .admin-menu-items, .admin-orders {
+    margin-bottom: 1rem;
+  }
+  
+  .admin-menu-item, .admin-order {
+    background-color: #F6FCDF;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-menu-item-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+  
+  .admin-menu-item-price, .admin-menu-item-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .admin-delete-button {
+    background-color: #ef4444;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-delete-button:hover {
+    background-color: #dc2626;
+  }
+  
+  .admin-order-total, .admin-order-status {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .admin-order-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .admin-status-button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pending { background-color: #f59e0b; color: white; }
+  .pending:hover { background-color: #d97706; }
+  
+  .preparing { background-color: #f97316; color: white; }
+  .preparing:hover { background-color: #ea580c; }
+  
+  .delivered { background-color: #10b981; color: white; }
+  .delivered:hover { background-color: #059669; }

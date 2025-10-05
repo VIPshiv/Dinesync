@@ -1,0 +1,162 @@
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* src/components/HomeNavbar/HomeNavbar.css */
+.home-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: rgba(49, 81, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 20px rgba(26, 26, 25, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.home-navbar.scrolled {
+  background-color: rgba(49, 81, 30, 0.98);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 6px 30px rgba(26, 26, 25, 0.15);
+}
+
+.home-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-navbar-brand {
+  color: #F6FCDF;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.home-navbar-brand:hover {
+  color: #1A1A19;
+  transform: scale(1.05);
+}
+
+.home-navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.home-navbar-link {
+  color: #F6FCDF;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.home-navbar-link:hover,
+.home-navbar-link.active {
+  color: #1A1A19;
+  background-color: #F6FCDF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 252, 223, 0.3);
+}
+
+.logout {
+  background: none;
+  border: 2px solid #F6FCDF;
+  cursor: pointer;
+  color: #F6FCDF;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.logout:hover {
+  color: #1A1A19;
+  background-color: #F6FCDF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 252, 223, 0.3);
+}
+
+/* Ensure cart button in home navbar matches global navbar styling */
+.home-navbar .cart-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0.7rem 1.2rem;
+}
+
+/* Force the cart drawer dark theme to match other pages when opened from HomeNavbar */
+.home-navbar .cart-drawer,
+.home-navbar .cart-drawer-content,
+.home-navbar .cart-items,
+.home-navbar .cart-footer,
+.home-navbar .cart-summary-block,
+.home-navbar .empty {
+  background: #121212 !important;
+}
+
+/* Maintain beige chips only (already styled globally) */
+.home-navbar .cart-inline-list { background: #f5f1e6 !important; }
+
+/* Adjust badge outline for green nav so it blends consistently */
+.home-navbar .cart-badge {
+  box-shadow: 0 0 0 2px #31511E;
+}
+  /* Responsive Design */
+@media (max-width: 768px) {
+  .home-navbar {
+    padding: 1rem;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .home-navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .home-navbar-links {
+    gap: 1rem;
+  }
+
+  .home-navbar-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .logout {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .home-navbar-links {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .home-navbar-link,
+  .logout {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
