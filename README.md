@@ -3,7 +3,7 @@
 A full‑stack restaurant ordering platform with a polished cart experience, secure checkout, order tracking, and a newsletter subscription system.
 
 ## Overview
-- Single‑page app (React + Vite) with animated landing sections and smooth in‑page navigation
+- App(React + Vite) with animated landing sections and smooth in‑page navigation
 - Express.js + MongoDB backend with JWT‑based auth and resilient DB readiness handling
 - Smart cart drawer: per‑item quantity controls, inline list, keyboard accessibility, and auth‑gated checkout
 - Order lifecycle: place orders and track by order number
@@ -45,7 +45,7 @@ res frontend/
 
 ## Prerequisites
 - Node.js 18+ and npm
-- MongoDB (Atlas URI or local instance)
+- MongoDB (Atlas)
 - Windows PowerShell (commands below use PowerShell syntax)
 
 ## Environment Variables
