@@ -64,7 +64,7 @@ Install dependencies and start backend and frontend in separate terminals.
 
 Backend:
 ```powershell
-cd "c:\Users\parma\OneDrive\Desktop\programming\web projects\full stack web\restaurent web\backend"
+cd "c:\Users\your file path\backend"
 npm install
 # start server (adjust if you have a script)
 node server.js
@@ -72,7 +72,7 @@ node server.js
 
 Frontend (Vite dev server):
 ```powershell
-cd "c:\Users\parma\OneDrive\Desktop\programming\web projects\full stack web\restaurent web\res frontend"
+cd "c:\Users\your file path\res frontend"
 npm install
 npm run dev
 ```
